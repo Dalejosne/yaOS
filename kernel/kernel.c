@@ -1,4 +1,5 @@
 #include "../lib/stdio.h"
+#include "../task/task.h"
 #include "../interrupt/interrupt.h"
 #include "gdt.h"
 #include "../interrupt/interrupt.h"
@@ -46,7 +47,7 @@ int main()
     kattr = 0xA;
     write("\t\tOK\n");
     
-    kattr = 0x7;
+    callTask();
 	while(1);
     
     return 0;

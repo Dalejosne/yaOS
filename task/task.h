@@ -20,5 +20,13 @@
     	u16    debug_flag, io_map;
 	}__attribute__((packed)) TSS;
 	
+	#ifdef TASK
+	//     On crée un tss par défaut pour notre tache
+    TSS default_tss;
+	#else
+	extern TSS default_tss;
+	#endif
 	void task1(void);
+	void callTask();
+	void initTask();
 #endif
