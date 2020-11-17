@@ -4,7 +4,7 @@
 	#define GDTSIZE 0xFF
 	#define GDTADDR  0x0
 
-	struct gdt_t
+	typedef struct _gdt_t
 	{
 		u16 lim_0_15;
 		u16 base_0_15;
@@ -13,23 +13,23 @@
 		u8 lim_16_19 : 4;
 		u8 flags : 4;
 		u8 base_24_31;
-	}__attribute__((packed));
+	}__attribute__((packed)) gdt_t;
 	
-	struct gdt_ptr
+	typedef struct _gdt_ptr
 	{
 		u16 size;
 		u32 addr;
-	}__attribute__((packed));
+	}__attribute__((packed)) gdt_ptr;
 	
 	void initGdt(void);
-	void init_descriptor(u32 base, u32 limite, u8 accessibility, u8 other, struct gdt_t *gdtdesc);
+	void init_gdt_descriptor(u32 base, u32 limite, u8 accessibility, u8 other, gdt_t *gdtdesc);
 	#define init_gdt() initGdt(); asm("mov ax, 0x18 \n mov ss, ax \n mov esp, 0x20000")
 
 	#ifdef __GDT__
-		struct gdt_t gdt[GDTSIZE];	/* GDT */
-		struct gdt_ptr gdtPtr;		/* GDTR */
+		gdt_t gdt[GDTSIZE];	/* GDT */
+		gdt_ptr gdtPtr;		/* GDTR */
 	#else
-		extern struct gdt_t gdt[GDTSIZE];	/* GDT */
-		extern struct gdt_ptr gdtPtr;
+		extern gdt_t gdt[GDTSIZE];	/* GDT */
+		extern gdt_ptr gdtPtr;
 	#endif
 #endif

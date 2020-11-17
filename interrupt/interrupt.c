@@ -46,7 +46,7 @@ void init_idt()
     idtr.base = IDT_BASE;
     idtr.limite = IDT_LIM*8;
     
-    memcpy(idt, idtr.base, idtr.limite);
+    memcpy((char*) idt, (char*)idtr.base, idtr.limite);
     
     asm("lidt (idtr)");
 }
