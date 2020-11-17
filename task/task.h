@@ -20,12 +20,19 @@
     	u16    debug_flag, io_map;
 	}__attribute__((packed)) TSS;
 	
+	typedef struct _TASK_INFO{
+		u32 size;
+		u32 memory_emplacement;
+	}Task_i;
+	
 	#ifdef TASK
-	//     On crée un tss par défaut pour notre tache
-    TSS default_tss;
+    	TSS default_tss;
+    	Task_i default_task_i;
 	#else
-	extern TSS default_tss;
+		extern TSS default_tss;
+		extern Task_i default_task_i;
 	#endif
+
 	void task1(void);
 	void callTask();
 	void initTask();

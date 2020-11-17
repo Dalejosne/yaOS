@@ -26,19 +26,17 @@ void initGdt(void)
 	init_gdt_descriptor(0x0, 0x0, 0x97, 0x0D, gdt+3); 		/*stack*/
 	
 	initTask();
+    
 	gdtPtr.size = GDTSIZE*8;
 	gdtPtr.addr = GDTADDR;
 	
 	memcpy((char*)gdt, (char*) gdtPtr.addr, gdtPtr.size);
 
 	asm("lgdt [gdtPtr]");
+	
 	asm("movw ax, 0x38 \n \
 		ltr %ax");
-
-	asm(".att_syntax noprefix");
-	asm("movw %ss, 0x18\n \
-		movl %esp, 0x20000");//ss = default_tss.ss0; esp = default_tss.esp0
-    asm(".intel_syntax noprefix");
+	
 	//On charge les segments, sauf celui de pile
 	asm("   movw ax, 0x10 \n \
             movw ds, ax       \n \
