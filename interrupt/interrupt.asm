@@ -30,13 +30,17 @@ _irq_0:
     iret
 
 _irq_1:
+	SAVE_REGS
     call irq_clavier
     mov al, 0x20
     out 0x20, al
+    RESTORE_REGS
     iret
 
 _irq_2:
+	SAVE_REGS
     call default_irq
     mov al, 0x20
     out 0x20, al
+    RESTORE_REGS
     iret
