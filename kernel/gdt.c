@@ -34,10 +34,11 @@ void initGdt(void)
 
 	asm("lgdt [gdtPtr]");
 	
+	//On charge le task register
 	asm("movw ax, 0x38 \n \
 		ltr %ax");
 	
-	//On charge les segments, sauf celui de pile
+	//On charge les segments, sauf celui de pile, et on long jump pour changer de mode
 	asm("   movw ax, 0x10 \n \
             movw ds, ax       \n \
             movw es, ax       \n \
@@ -45,5 +46,4 @@ void initGdt(void)
             movw gs, ax     \n  \
             jmp 0x08 : next\n \
             next: \n");
-	
 }
