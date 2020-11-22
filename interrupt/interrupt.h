@@ -13,10 +13,10 @@
 
 	
 	//Définition des instructions assembleur x86
-	#define out(port, value) asm("out dx, al; jmp 1f; 1:" :: "d" (port), "a" (value)) //un bit a en sortie sur port
+	#define out(port, value) asm("out %%al, %%dx; jmp 1f; 1:" :: "d" (port), "a" (value)) //un bit a en sortie sur port
 	#define in(port) ({    \
         unsigned char _v;       \
-        asm volatile ("in al, dx" : "=a" (_v) : "d" (port)); \
+        asm volatile ("in %%dx, %%al" : "=a" (_v) : "d" (port)); \
         _v;     \
     })
 	#define cli asm("cli"::)//Active les interruptions
