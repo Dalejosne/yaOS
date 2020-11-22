@@ -6,7 +6,7 @@
 void _irq0(void);
 void _irq1(void);
 void _irq2(void);
-void _logicielle(void);
+void _irqLogicielle(void);
 
 static Idt idt[IDT_LIM];
 static IdtR _Idt_R;
@@ -20,7 +20,8 @@ void initIdtDescriptor(u32 offset, u16 selector, u16 type, Idt* idt)
 }
 
 void configurePic()
-{   out(0x20, 0x18);
+{   
+	out(0x20, 0x18);
     out(0xA0, 0x18);//On configure ICW1;
     
     out(0x21, 0x20);//Adresse de départ des vect d'int = 0x20
@@ -42,7 +43,7 @@ void initIdt()
     //Initialisation des descripteur d'interruption du clavier et de l'horloge
     initIdtDescriptor((u32) _irq0, 0x08, INT_TYPE, idt+32); //horloge
     initIdtDescriptor((u32) _irq1, 0x08, INT_TYPE, idt+33); //clavier
-    initIdtDescriptor((u32) _logicielle, 0x08, 0xEF00, idt+48);
+    initIdtDescriptor((u32) _irqLogicielle, 0x08, 0xEF00, idt+48);
     
     //Initialisation de idtr
     _Idt_R.base = IDT_BASE;
