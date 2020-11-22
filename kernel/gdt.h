@@ -23,7 +23,7 @@
 	
 	void initGdt_(void);
 	void initGdtDescriptor(u32 base, u32 limite, u8 accessibility, u8 other, GdtT *Gdt_Desc);
-	#define initGdt() initGdt_(); asm("mov ax, 0x18 \n mov ss, ax \n mov esp, 0x20000")
+	#define initGdt() initGdt_(); asm("movw $0x18, %ax \n movw %ax, %ss \n movl $0x20000, %esp")
 
 	#ifdef __GDT__
 		GdtT Gdt[GDTSIZE];	/* GDT */
