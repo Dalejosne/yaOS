@@ -47,6 +47,7 @@ int main()
     kattr = 0xA;
     write("\t\tOK\n");
     
+    kattr = 0x7;
     callTask();
 	while(1);
     
