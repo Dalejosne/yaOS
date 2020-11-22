@@ -1,6 +1,6 @@
-#ifndef __TASK
-	#define __TASK
-	typedef struct _TSS{
+#ifndef __TASK_H__
+	#define __TASK_H__
+	typedef struct Tss_{
     	u16    previous_task, __previous_task_unused;
     	u32    esp0;
     	u16    ss0, __ss0_unused;
@@ -18,19 +18,19 @@
     	u16    gs, __gs_unused;
     	u16    ldt_selector, __ldt_sel_unused;
     	u16    debug_flag, io_map;
-	}__attribute__((packed)) TSS;
+	}__attribute__((packed)) Tss;
 	
-	typedef struct _TASK_INFO{
+	typedef struct TaskInfo_{
 		u32 size;
 		u32 memory_emplacement;
-	}Task_i;
+	}TaskI;
 	
-	#ifdef TASK
-    	TSS default_tss;
-    	Task_i default_task_i;
+	#ifdef __TASK__
+    	Tss Default_Tss;
+    	TaskI Default_Task_I;
 	#else
-		extern TSS default_tss;
-		extern Task_i default_task_i;
+		extern Tss Default_Tss;
+		extern TaskI Default_Task_I;
 	#endif
 
 	void task1(void);

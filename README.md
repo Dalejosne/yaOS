@@ -1,2 +1,2 @@
 # OS
-This branch is the stable one
+This branch is the developpement one
