@@ -6,7 +6,7 @@
 void _irq0(void);
 void _irq1(void);
 void _irq2(void);
-void _logicielle(void);
+void _irqLogicielle(void);
 
 static Idt idt[IDT_LIM];
 static IdtR _Idt_R;
@@ -42,7 +42,7 @@ void initIdt()
     //Initialisation des descripteur d'interruption du clavier et de l'horloge
     initIdtDescriptor((u32) _irq0, 0x08, INT_TYPE, idt+32); //horloge
     initIdtDescriptor((u32) _irq1, 0x08, INT_TYPE, idt+33); //clavier
-    initIdtDescriptor((u32) _logicielle, 0x08, 0xEF00, idt+48);
+    initIdtDescriptor((u32) _irqLogicielle, 0x08, 0xEF00, idt+48);
     
     //Initialisation de idtr
     _Idt_R.base = IDT_BASE;
