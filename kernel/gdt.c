@@ -32,18 +32,18 @@ void initGdt_(void)
 	
 	memcpy((char*)Gdt, (char*) Gdt_Ptr.addr, Gdt_Ptr.size);
 
-	asm("lgdt [Gdt_Ptr]");
+	asm("lgdt (Gdt_Ptr)\n");
 	
-	asm("movw ax, 0x38 \n \
-		ltr %ax");
+	asm("movw $0x38, %ax \n \
+		ltr %ax\n");
 	
 	//On charge les segments, sauf celui de pile
-	asm("   movw ax, 0x10 \n \
-            movw ds, ax       \n \
-            movw es, ax       \n \
-            movw fs, ax       \n \
-            movw gs, ax     \n  \
-            jmp 0x08 : next\n \
+	asm("   movw $0x10, %ax \n \
+            movw %ax, %ds       \n \
+            movw %ax, %es       \n \
+            movw %ax, %fs       \n \
+            movw %ax, %gs     \n  \
+            jmp $0x08, $next\n \
             next: \n");
 	
 }

@@ -29,7 +29,7 @@ void _start(void)
     
 	kattr = 0x7;
 	write("Loading new gdt...");
-    
+	
 	initGdt(); //Initialisation de la nouvelle gdt
 
 	main();
