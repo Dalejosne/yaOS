@@ -49,7 +49,7 @@ void initIdt()
     _Idt_R.base = IDT_BASE;
     _Idt_R.limite = IDT_LIM*8;
     
-    memcpy((char*) idt, (char*)_Idt_R.base, _Idt_R.limite);
+    kmemcpy((char*) idt, (char*)_Idt_R.base, _Idt_R.limite);
     
     asm("lidt (_Idt_R)");
 }
@@ -93,22 +93,25 @@ void _irqDefault()
 
 void _sysCalls(int num_appel)
 {
-  u16 ds_select;
-  u32 ds_base;
-  struct GdtT_ *ds;
-  uchar *message;
+	u16 ds_select;
+	u32 ds_base;
+	struct GdtT_ *ds;
+	uchar *message;
 
-  if (num_appel==1) {
-    asm("mov 44(%%ebp), %%eax \n \
-         mov %%eax, %0  \n \
-         mov 24(%%ebp), %%ax \n \
-         mov %%ax, %1" : "=m"(message), "=m"(ds_select) : );
-    ds = (struct GdtT_ *) (GDTADDR + (ds_select & 0xF8));
-    ds_base = ds->base_0_15 + (ds->base_16_23 <<16) + (ds->base_24_31 << 24);
-    write((char*) (ds_base + message));
-    } else {
-    write("syscall\n");
-    }
-    return;
-    }
+	if (num_appel==1) {
+		asm("mov 44(%%ebp), %%eax \n \
+        	mov %%eax, %0  \n \
+        	mov 24(%%ebp), %%ax \n \
+        	mov %%ax, %1" : "=m"(message), "=m"(ds_select) : );
+		ds = (struct GdtT_ *) (GDTADDR + (ds_select & 0xF8));
+		ds_base = ds->base_0_15 + (ds->base_16_23 <<16) + (ds->base_24_31 << 24);
+		
+		
+		write((char*) (ds_base + message));
+	} 
+	else {
+		write("syscall\n");
+	}
+	return;
+}
 

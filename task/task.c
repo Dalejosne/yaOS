@@ -24,7 +24,7 @@ void initTask(){
 
 	Default_Task_I.memory_emplacement = 0x300000;//Uniquement nécéssaire que le code ne corrompe pas la pile
 	Default_Task_I.size = 100;//La tâche est toute petite, on lui attribue juste 100 o.
-	memcpy((void*) &task1, (char*) Default_Task_I.memory_emplacement, Default_Task_I.size);
+	kmemcpy((void*) &task1, (char*) Default_Task_I.memory_emplacement, Default_Task_I.size);
 
 	//     Initialisation des descripteurs de segment utilisateur
     initGdtDescriptor(Default_Task_I.memory_emplacement, 0x0, 0xFF, 0x0D, Gdt+4); /* ucode */

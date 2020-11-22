@@ -1,4 +1,4 @@
-LINK= ld -Ttext 1000 --oformat binary -m elf_i386
+LINK = ld -Ttext 1000 --oformat binary -m elf_i386
 
 all : floppy
 

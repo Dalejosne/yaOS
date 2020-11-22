@@ -46,7 +46,7 @@ _irq2:
     iret
 
 _irqLogicielle:
- SAVE_REGS
+	SAVE_REGS
     push eax
     call _sysCalls
     pop eax
