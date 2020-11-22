@@ -1,5 +1,5 @@
-extern _irqHorloge, _irqClavier, _irqDefault
-global _irq0, _irq1, _irq2
+extern _irqHorloge, _irqClavier, _irqDefault, _sysCalls
+global _irq0, _irq1, _irq2, _irq_logicielle
 
 %macro  SAVE_REGS 0
         pushad 
@@ -42,5 +42,13 @@ _irq2:
     call _irqDefault
     mov al, 0x20
     out 0x20, al
+    RESTORE_REGS
+    iret
+
+_irq_logicielle:
+ SAVE_REGS
+    push eax
+    call _sysCalls
+    pop eax
     RESTORE_REGS
     iret
