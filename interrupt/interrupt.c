@@ -20,7 +20,7 @@ void initIdtDescriptor(u32 offset, u16 selector, u16 type, Idt* idt)
 }
 
 void configurePic()
-{   
+{
 	out(0x20, 0x18);
     out(0xA0, 0x18);//On configure ICW1;
     
@@ -63,17 +63,10 @@ void _irqClavier()
     i = in(0x60);
 //     On affiche le code de la touche appuyée, en convertissant le code numérique en chaîne de caractères.
     if(i<0x80){
-        char letter[5] = "000 ";
-        for(int ind = 0; ind<3; ind++)
-        {
-            int puiss = 1;
-            for(int pow = 0; pow<2-ind; pow++)
-                puiss*=10;
-            uchar x = i/puiss;
-            i%=(puiss);
-            letter[ind] = x+48;
-        }
-        write(letter);
+        char letter_id[5];
+        intToStr(i, letter_id);
+        write(letter_id);
+        write(" ");
     }
 }
 
@@ -105,8 +98,7 @@ void _sysCalls(int num_appel)
         	mov %%ax, %1" : "=m"(message), "=m"(ds_select) : );
 		ds = (struct GdtT_ *) (GDTADDR + (ds_select & 0xF8));
 		ds_base = ds->base_0_15 + (ds->base_16_23 <<16) + (ds->base_24_31 << 24);
-		
-		
+
 		write((char*) (ds_base + message));
 	} 
 	else {
@@ -114,4 +106,3 @@ void _sysCalls(int num_appel)
 	}
 	return;
 }
-

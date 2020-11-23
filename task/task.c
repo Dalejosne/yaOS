@@ -6,17 +6,17 @@
 
 void task1(void)
 {
-  char *msg=(char*) 0x100;
-  msg[0] = 't' ;
-  msg[1] = 'a' ;
-  msg[2] = 'c' ;
-  msg[3] = 'h' ;
-  msg[4] = 'e' ;
-  msg[5] = '\n';
-  msg[6] = 0 ;
-  asm("mov %0, %%ebx; mov $0x01, %%eax; int $0x30" :: "m" (msg));
-  while(1);
-  return;
+	char *msg=(char*) 0x100;
+	msg[0] = 't' ;
+	msg[1] = 'a' ;
+	msg[2] = 'c' ;
+	msg[3] = 'h' ;
+	msg[4] = 'e' ;
+	msg[5] = '\n';
+	msg[6] = 0 ;
+	asm("mov %0, %%ebx; mov $0x01, %%eax; int $0x30" :: "m" (msg));
+	while(1);
+	return;
 }
 
 //Cette fonction initialise la gdt et copie la tâche en mémoire
