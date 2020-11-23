@@ -4,6 +4,8 @@
 #include "../lib/types.h"
 #include "task.h"
 
+#define sysWrite(chaine) asm("mov %0, %%ebx; mov $0x01, %%eax; int $0x30" :: "m" (chaine));
+
 void task1(void)
 {
 	char *msg=(char*) 0x100;
@@ -14,7 +16,7 @@ void task1(void)
 	msg[4] = 'e' ;
 	msg[5] = '\n';
 	msg[6] = 0 ;
-	asm("mov %0, %%ebx; mov $0x01, %%eax; int $0x30" :: "m" (msg));
+	sysWrite(msg);
 	while(1);
 	return;
 }
