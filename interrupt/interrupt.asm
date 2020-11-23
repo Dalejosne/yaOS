@@ -1,4 +1,4 @@
-extern _irqHorloge, _irqClavier, _irqDefault, _sysCalls
+extern _irqHorloge, _irqClavier, _irqDefault, _sysCalls, putchar
 global _irq0, _irq1, _irq2, _irqLogicielle
 
 %macro  SAVE_REGS 0

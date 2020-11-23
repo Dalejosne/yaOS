@@ -1,4 +1,4 @@
-CC=gcc -m32 -Wall -L/usr/lib32 -fno-pie -no-pie -fno-stack-protector -lssp
+CC=gcc -m32 -Wall -g -L/usr/lib32 -fno-pie -no-pie -fno-stack-protector -lssp
 
 noyau_o: gdt_o
 	$(CC) -c kernel.c

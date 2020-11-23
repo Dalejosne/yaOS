@@ -90,8 +90,15 @@ void _sysCalls(int num_appel)
 	u32 ds_base;
 	struct GdtT_ *ds;
 	uchar *message;
+	int lettre;
 
-	if (num_appel==1) {
+	if (num_appel == 1){
+		asm("mov 44(%%ebp), %%eax \n \
+        	mov %%eax, %0" : "=m"(lettre));
+		putchar(lettre);
+		putchar('\n');
+	}
+	else if (num_appel==2) {
 		asm("mov 44(%%ebp), %%eax \n \
         	mov %%eax, %0  \n \
         	mov 24(%%ebp), %%ax \n \
@@ -100,7 +107,7 @@ void _sysCalls(int num_appel)
 		ds_base = ds->base_0_15 + (ds->base_16_23 <<16) + (ds->base_24_31 << 24);
 
 		write((char*) (ds_base + message));
-	} 
+	}
 	else {
 		write("syscall\n");
 	}

@@ -4,7 +4,9 @@
 #include "../lib/types.h"
 #include "task.h"
 
-#define sysWrite(chaine) asm("mov %0, %%ebx; mov $0x01, %%eax; int $0x30" :: "m" (chaine));
+#define sysWrite(chaine) asm("mov %0, %%ebx; mov $0x02, %%eax; int $0x30" :: "m"(chaine))
+#define sysPutchar(lettre) asm ("mov %0, %%ebx; mov $0x01, %%eax; int $0x30":: "g"(lettre))
+#define sysDefault() asm ("mov $0x03, %eax; int $0x30")
 
 void task1(void)
 {
