@@ -4,8 +4,13 @@
 #include "../lib/types.h"
 #include "task.h"
 
+#define sysWrite(chaine) asm("mov %0, %%ebx; mov $0x02, %%eax; int $0x30" :: "m"(chaine))
+#define sysPutchar(lettre) asm ("mov %0, %%ebx; mov $0x01, %%eax; int $0x30":: "g"(lettre))
+#define sysDefault() asm ("mov $0x03, %eax; int $0x30")
+
 void task1(void)
 {
+<<<<<<< HEAD
   char *msg=(char*) 0x100;
   msg[0] = 't' ;
   msg[1] = 'a' ;
@@ -17,6 +22,19 @@ void task1(void)
   asm("mov %0, %%ebx; mov $0x01, %%eax; int $0x30" :: "m" (msg));
   while(1);
   return;
+=======
+	char *msg=(char*) 0x100;
+	msg[0] = 't' ;
+	msg[1] = 'a' ;
+	msg[2] = 'c' ;
+	msg[3] = 'h' ;
+	msg[4] = 'e' ;
+	msg[5] = '\n';
+	msg[6] = 0 ;
+	sysWrite(msg);
+	while(1);
+	return;
+>>>>>>> master
 }
 
 //Cette fonction initialise la gdt et copie la tâche en mémoire
@@ -24,7 +42,11 @@ void initTask(){
 
 	Default_Task_I.memory_emplacement = 0x300000;//Uniquement nécéssaire que le code ne corrompe pas la pile
 	Default_Task_I.size = 100;//La tâche est toute petite, on lui attribue juste 100 o.
+<<<<<<< HEAD
 	memcpy((void*) &task1, (char*) Default_Task_I.memory_emplacement, Default_Task_I.size);
+=======
+	kmemcpy((void*) &task1, (char*) Default_Task_I.memory_emplacement, Default_Task_I.size);
+>>>>>>> master
 
 	//     Initialisation des descripteurs de segment utilisateur
     initGdtDescriptor(Default_Task_I.memory_emplacement, 0x0, 0xFF, 0x0D, Gdt+4); /* ucode */

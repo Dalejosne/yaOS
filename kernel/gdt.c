@@ -30,7 +30,11 @@ void initGdt_(void)
 	Gdt_Ptr.size = GDTSIZE*8;
 	Gdt_Ptr.addr = GDTADDR;
 	
+<<<<<<< HEAD
 	memcpy((char*)Gdt, (char*) Gdt_Ptr.addr, Gdt_Ptr.size);
+=======
+	kmemcpy((char*)Gdt, (char*) Gdt_Ptr.addr, Gdt_Ptr.size);
+>>>>>>> master
 
 	asm("lgdt (Gdt_Ptr)\n");
 	

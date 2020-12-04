@@ -5,3 +5,6 @@ interrupt_o: irq_o
 
 irq_o: 
 	nasm -f elf interrupt.asm -o irq.o
+
+clean:
+	rm -rf *.o

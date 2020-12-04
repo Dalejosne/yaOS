@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 extern _irqHorloge, _irqClavier, _irqDefault, _sysCalls
+=======
+extern _irqHorloge, _irqClavier, _irqDefault, _sysCalls, putchar
+>>>>>>> master
 global _irq0, _irq1, _irq2, _irqLogicielle
 
 %macro  SAVE_REGS 0
@@ -46,7 +50,11 @@ _irq2:
     iret
 
 _irqLogicielle:
+<<<<<<< HEAD
  SAVE_REGS
+=======
+	SAVE_REGS
+>>>>>>> master
     push eax
     call _sysCalls
     pop eax

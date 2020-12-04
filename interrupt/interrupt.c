@@ -20,7 +20,11 @@ void initIdtDescriptor(u32 offset, u16 selector, u16 type, Idt* idt)
 }
 
 void configurePic()
+<<<<<<< HEAD
 {   
+=======
+{
+>>>>>>> master
 	out(0x20, 0x18);
     out(0xA0, 0x18);//On configure ICW1;
     
@@ -49,7 +53,11 @@ void initIdt()
     _Idt_R.base = IDT_BASE;
     _Idt_R.limite = IDT_LIM*8;
     
+<<<<<<< HEAD
     memcpy((char*) idt, (char*)_Idt_R.base, _Idt_R.limite);
+=======
+    kmemcpy((char*) idt, (char*)_Idt_R.base, _Idt_R.limite);
+>>>>>>> master
     
     asm("lidt (_Idt_R)");
 }
@@ -63,17 +71,10 @@ void _irqClavier()
     i = in(0x60);
 //     On affiche le code de la touche appuyée, en convertissant le code numérique en chaîne de caractères.
     if(i<0x80){
-        char letter[5] = "000 ";
-        for(int ind = 0; ind<3; ind++)
-        {
-            int puiss = 1;
-            for(int pow = 0; pow<2-ind; pow++)
-                puiss*=10;
-            uchar x = i/puiss;
-            i%=(puiss);
-            letter[ind] = x+48;
-        }
-        write(letter);
+        char letter_id[5];
+        intToStr(i, letter_id);
+        write(letter_id);
+        write(" ");
     }
 }
 
@@ -93,6 +94,7 @@ void _irqDefault()
 
 void _sysCalls(int num_appel)
 {
+<<<<<<< HEAD
   u16 ds_select;
   u32 ds_base;
   struct GdtT_ *ds;
@@ -112,3 +114,32 @@ void _sysCalls(int num_appel)
     return;
     }
 
+=======
+	u16 ds_select;
+	u32 ds_base;
+	struct GdtT_ *ds;
+	uchar *message;
+	int lettre;
+
+	if (num_appel == 1){
+		asm("mov 44(%%ebp), %%eax \n \
+        	mov %%eax, %0" : "=m"(lettre));
+		putchar(lettre);
+		putchar('\n');
+	}
+	else if (num_appel==2) {
+		asm("mov 44(%%ebp), %%eax \n \
+        	mov %%eax, %0  \n \
+        	mov 24(%%ebp), %%ax \n \
+        	mov %%ax, %1" : "=m"(message), "=m"(ds_select) : );
+		ds = (struct GdtT_ *) (GDTADDR + (ds_select & 0xF8));
+		ds_base = ds->base_0_15 + (ds->base_16_23 <<16) + (ds->base_24_31 << 24);
+
+		write((char*) (ds_base + message));
+	}
+	else {
+		write("syscall\n");
+	}
+	return;
+}
+>>>>>>> master
