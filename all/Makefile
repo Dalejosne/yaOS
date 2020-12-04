@@ -1,9 +1,10 @@
-LINK = ld -Ttext 1000 --oformat binary -m elf_i386
+LINK = ld -Ttext 0x1000 --oformat binary -m elf_i386
 
 all : floppy
 
+#L'ordre est important !!! ../kernel/kernelo doit être linké en premier !
 noyau: noyau_o interrupt_o task_o lib
-	 $(LINK) ../kernel/kernel.o ../kernel/gdt.o ../task/task.o ../interrupt/irq.o ../interrupt/interrupt.o ../lib/stdio.o ../lib/stdlib.o -o ../kernel/kernel
+	 $(LINK) ../kernel/*.o ../lib/*.o ../interrupt/*.o ../task/*.o -o kernel
 	 
 clean: clean_noyau clean_task clean_interrupt clean_lib clean_bootloader
 	rm -rf *.o *.a kernel testOs.flp
@@ -38,4 +39,4 @@ bootloader:
 	make -C ../bootloader
 	
 floppy: bootloader noyau
-	cat ../bootloader/bootloader ../kernel/kernel /dev/zero | dd of=testOs.flp bs=512 count=2880
+	cat ../bootloader/bootloader kernel /dev/zero | dd of=testOs.flp bs=512 count=2880

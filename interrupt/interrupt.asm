@@ -1,5 +1,5 @@
-extern _irqHorloge, _irqClavier, _irqDefault, _sysCalls, putchar
-global _irq0, _irq1, _irq2, _irqLogicielle
+extern _irqHorloge, _irqClavier, _irqDefault, _sysCalls
+global _irqDef, _irq32, _irq33, _irqLogicielle
 
 %macro  SAVE_REGS 0
         pushad 
@@ -21,7 +21,7 @@ global _irq0, _irq1, _irq2, _irqLogicielle
         popad
 %endmacro
 
-_irq0:
+_irq32:
 	SAVE_REGS
     call _irqHorloge
     mov al, 0x20
@@ -29,7 +29,7 @@ _irq0:
     RESTORE_REGS
     iret
 
-_irq1:
+_irq33:
 	SAVE_REGS
     call _irqClavier
     mov al, 0x20
@@ -37,7 +37,7 @@ _irq1:
     RESTORE_REGS
     iret
 
-_irq2:
+_irqDef:
 	SAVE_REGS
     call _irqDefault
     mov al, 0x20
