@@ -1,7 +1,12 @@
-CC=gcc -m32 -g -Wall -L/usr/lib32 -fno-pie -no-pie -fno-stack-protector -lssp
+CC=gcc -m32 -g -Wall -L/usr/lib32 -fno-pie -no-pie -fno-stack-protector -lssp -nostdlib
 
-interrupt_o: irq_o
-	$(CC) -c interrupt.c
+interrupt_o: int_asm exc_asm
+	$(CC) -c *.c
 
-irq_o: 
-	nasm -f elf interrupt.asm -o irq.o
+int_asm: 
+	nasm -f elf interrupt.asm -o int.o
+exc_asm:
+	nasm -f elf exception.asm -o exc.o
+
+clean:
+	rm -rf *.o
