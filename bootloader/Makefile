@@ -1,4 +1,4 @@
 bootloader:
-	nasm -f bin ../bootloader/bootloader.asm -o ../bootloader/bootloader
+	nasm -f bin bootloader.asm -o bootloader
 clean:
 	rm -rf bootloader

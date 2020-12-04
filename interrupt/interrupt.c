@@ -3,6 +3,7 @@
 #include "../lib/stdio.h"
 #include "../kernel/gdt.h"
 
+<<<<<<< HEAD
 void _irq0(void);
 void _irq1(void);
 void _irq2(void);
@@ -61,6 +62,8 @@ void initIdt()
     
     asm("lidt (_Idt_R)");
 }
+=======
+>>>>>>> 47789b9ebbb4ea00fd23fc20c918f75b575a407e
 void _irqClavier()
 {
     uchar i = 0;
@@ -95,25 +98,34 @@ void _irqDefault()
 void _sysCalls(int num_appel)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   u16 ds_select;
   u32 ds_base;
   struct GdtT_ *ds;
   uchar *message;
+=======
+	u16 ds_select;
+	u32 ds_base;
+	struct GdtT_ *ds;
+	uchar *message;
+	int lettre;
+>>>>>>> 47789b9ebbb4ea00fd23fc20c918f75b575a407e
 
-  if (num_appel==1) {
-    asm("mov 44(%%ebp), %%eax \n \
-         mov %%eax, %0  \n \
-         mov 24(%%ebp), %%ax \n \
-         mov %%ax, %1" : "=m"(message), "=m"(ds_select) : );
-    ds = (struct GdtT_ *) (GDTADDR + (ds_select & 0xF8));
-    ds_base = ds->base_0_15 + (ds->base_16_23 <<16) + (ds->base_24_31 << 24);
-    write((char*) (ds_base + message));
-    } else {
-    write("syscall\n");
-    }
-    return;
-    }
+	if (num_appel == 1){
+		asm("mov 44(%%ebp), %%eax \n \
+        	mov %%eax, %0" : "=m"(lettre));
+		putchar(lettre);
+		putchar('\n');
+	}
+	else if (num_appel==2) {
+		asm("mov 44(%%ebp), %%eax \n \
+        	mov %%eax, %0  \n \
+        	mov 24(%%ebp), %%ax \n \
+        	mov %%ax, %1" : "=m"(message), "=m"(ds_select) : );
+		ds = (struct GdtT_ *) (GDTADDR + (ds_select & 0xF8));
+		ds_base = ds->base_0_15 + (ds->base_16_23 <<16) + (ds->base_24_31 << 24);
 
+<<<<<<< HEAD
 =======
 	u16 ds_select;
 	u32 ds_base;
@@ -135,6 +147,8 @@ void _sysCalls(int num_appel)
 		ds = (struct GdtT_ *) (GDTADDR + (ds_select & 0xF8));
 		ds_base = ds->base_0_15 + (ds->base_16_23 <<16) + (ds->base_24_31 << 24);
 
+=======
+>>>>>>> 47789b9ebbb4ea00fd23fc20c918f75b575a407e
 		write((char*) (ds_base + message));
 	}
 	else {
@@ -142,4 +156,7 @@ void _sysCalls(int num_appel)
 	}
 	return;
 }
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 47789b9ebbb4ea00fd23fc20c918f75b575a407e
