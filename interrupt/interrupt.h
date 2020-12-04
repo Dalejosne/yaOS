@@ -13,10 +13,10 @@
 
 	
 	//Définition des instructions assembleur x86
-	#define out(port, value) asm("out dx, al; jmp 1f; 1:" :: "d" (port), "a" (value)) //un bit a en sortie sur port
+	#define out(port, value) asm("outb %%al, %%dx; jmp 1f; 1:" :: "d" (port), "a" (value)) //un bit a en sortie sur port
 	#define in(port) ({    \
         unsigned char _v;       \
-        asm volatile ("in al, dx" : "=a" (_v) : "d" (port)); \
+        asm volatile ("inb %%dx, %%al" : "=a" (_v) : "d" (port)); \
         _v;     \
     })
 	#define cli asm("cli"::)//Active les interruptions
@@ -30,29 +30,27 @@
 
 
 	//Structure des interruptions, et définition
-	typedef struct IDT IDT;
-    typedef struct IDTR IDTR;
 	
-	struct IDT
+	typedef struct Idt_
 	{
 		u16 offset0_15;
 		u16 selector;
 		u16 type;
 		u16 offset16_31;
-	}__attribute__ ((packed));
+	}__attribute__ ((packed)) Idt;
     
-    struct IDTR
+    typedef struct IdtR_
     {
         u16 limite;
         u32 base;
-    }__attribute__((packed));
+    }__attribute__((packed)) IdtR;
 
     #define IDT_LIM 0xFF //taille de la GDT
     #define IDT_BASE 0x800 //adresse physique de la GDT
 
-    void init_idt_desc(u32 offset, u16 selector, u16 type, IDT* idt);
-    void configure_pic();
-    void init_idt();
+    void initIdtDescriptor(u32 offset, u16 selector, u16 type, Idt* idt);
+    void configurePic();
+    void initIdt();
 
 
 

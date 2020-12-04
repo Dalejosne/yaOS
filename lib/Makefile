@@ -1,4 +1,4 @@
-CC=gcc -m32 -Wall -masm=intel -L/usr/lib32 -fno-pie -no-pie -fno-stack-protector -lssp
+CC=gcc -m32 -g -Wall -L/usr/lib32 -fno-pie -no-pie -fno-stack-protector -lssp
 
 #lib statiques
 io_o: lib_o

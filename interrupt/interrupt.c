@@ -1,15 +1,17 @@
 #include "interrupt.h"
 #include "../lib/stdlib.h"
 #include "../lib/stdio.h"
+#include "../kernel/gdt.h"
 
-void _irq_0(void);
-void _irq_1(void);
-void _irq_2(void);
+void _irq0(void);
+void _irq1(void);
+void _irq2(void);
+void _irqLogicielle(void);
 
-static IDT idt[IDT_LIM];
-static IDTR idtr;
+static Idt idt[IDT_LIM];
+static IdtR _Idt_R;
 
-void init_idt_desc(u32 offset, u16 selector, u16 type, IDT* idt)
+void initIdtDescriptor(u32 offset, u16 selector, u16 type, Idt* idt)
 {
     idt->offset0_15 = offset & 0xFFFF;
     idt->offset16_31 = (offset & 0xFFFF0000) >> 16;
@@ -17,9 +19,9 @@ void init_idt_desc(u32 offset, u16 selector, u16 type, IDT* idt)
     idt->type = type;
 }
 
-void configure_pic()
+void configurePic()
 {
-    out(0x20, 0x18);
+	out(0x20, 0x18);
     out(0xA0, 0x18);//On configure ICW1;
     
     out(0x21, 0x20);//Adresse de départ des vect d'int = 0x20
@@ -32,25 +34,26 @@ void configure_pic()
     out(0xA1, 0x0);
 }
 
-void init_idt()
+void initIdt()
 {
     //Initialisation des descripteur d'interruption par défaut
     for(int i = 0; i<IDT_LIM;i++)
-        init_idt_desc((u32) _irq_2, 0x08, INT_TYPE, idt+i);
+        initIdtDescriptor((u32) _irq2, 0x08, INT_TYPE, idt+i);
     
     //Initialisation des descripteur d'interruption du clavier et de l'horloge
-    init_idt_desc((u32) _irq_0, 0x08, INT_TYPE, idt+32); //horloge
-    init_idt_desc((u32) _irq_1, 0x08, INT_TYPE, idt+33); //clavier
+    initIdtDescriptor((u32) _irq0, 0x08, INT_TYPE, idt+32); //horloge
+    initIdtDescriptor((u32) _irq1, 0x08, INT_TYPE, idt+33); //clavier
+    initIdtDescriptor((u32) _irqLogicielle, 0x08, 0xEF00, idt+48);
     
     //Initialisation de idtr
-    idtr.base = IDT_BASE;
-    idtr.limite = IDT_LIM*8;
+    _Idt_R.base = IDT_BASE;
+    _Idt_R.limite = IDT_LIM*8;
     
-    memcpy((char*) idt, (char*)idtr.base, idtr.limite);
+    kmemcpy((char*) idt, (char*)_Idt_R.base, _Idt_R.limite);
     
-    asm("lidt (idtr)");
+    asm("lidt (_Idt_R)");
 }
-void irq_clavier()
+void _irqClavier()
 {
     uchar i = 0;
     do{
@@ -58,23 +61,16 @@ void irq_clavier()
     }while((i&0x01) == 0);
     
     i = in(0x60);
-//     On affiche le code de la touche appuyée 
+//     On affiche le code de la touche appuyée, en convertissant le code numérique en chaîne de caractères.
     if(i<0x80){
-        char letter[5] = "000 ";
-        for(int ind = 0; ind<3; ind++)
-        {
-            int puiss = 1;
-            for(int pow = 0; pow<2-ind; pow++)
-                puiss*=10;
-            uchar x = i/puiss;
-            i%=(puiss);
-            letter[ind] = x+48;
-        }
-        write(letter);
+        char letter_id[5];
+        intToStr(i, letter_id);
+        write(letter_id);
+        write(" ");
     }
 }
 
-void irq_horloge()
+void _irqHorloge()
 {
     static int nb_count = 0;
     nb_count++;
@@ -83,7 +79,37 @@ void irq_horloge()
         write("Clock\n");
 }
 
-void default_irq()
+void _irqDefault()
 {
     write("Default interruption\n");
+}
+
+void _sysCalls(int num_appel)
+{
+	u16 ds_select;
+	u32 ds_base;
+	struct GdtT_ *ds;
+	uchar *message;
+	int lettre;
+
+	if (num_appel == 1){
+		asm("mov 44(%%ebp), %%eax \n \
+        	mov %%eax, %0" : "=m"(lettre));
+		putchar(lettre);
+		putchar('\n');
+	}
+	else if (num_appel==2) {
+		asm("mov 44(%%ebp), %%eax \n \
+        	mov %%eax, %0  \n \
+        	mov 24(%%ebp), %%ax \n \
+        	mov %%ax, %1" : "=m"(message), "=m"(ds_select) : );
+		ds = (struct GdtT_ *) (GDTADDR + (ds_select & 0xF8));
+		ds_base = ds->base_0_15 + (ds->base_16_23 <<16) + (ds->base_24_31 << 24);
+
+		write((char*) (ds_base + message));
+	}
+	else {
+		write("syscall\n");
+	}
+	return;
 }
