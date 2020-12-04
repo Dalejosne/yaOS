@@ -29,16 +29,8 @@ void initGdt_(void)
     
 	Gdt_Ptr.size = GDTSIZE*8;
 	Gdt_Ptr.addr = GDTADDR;
-	
-<<<<<<< HEAD:kernel/gdt.c
-<<<<<<< HEAD
-	memcpy((char*)Gdt, (char*) Gdt_Ptr.addr, Gdt_Ptr.size);
-=======
+
 	kmemcpy((char*)Gdt, (char*) Gdt_Ptr.addr, Gdt_Ptr.size);
->>>>>>> master
-=======
-	kmemcpy((char*)Gdt, (char*) Gdt_Ptr.addr, Gdt_Ptr.size);
->>>>>>> 47789b9ebbb4ea00fd23fc20c918f75b575a407e:kernel/kgdt.c
 
 	asm("lgdt (Gdt_Ptr)\n");
 	

@@ -13,7 +13,7 @@
 
 	
 	//Définition des instructions assembleur x86
-	#define out(port, value) asm("outb %%al, %%dx; jmp 1f; 1:" :: "d" (port), "a" (value)) //un bit a en sortie sur port
+	#define outb(port, value) asm("outb %%al, %%dx; jmp 1f; 1:": :"d" (port), "a" (value)) //un bit a en sortie sur port
 	#define in(port) ({    \
         unsigned char _v;       \
         asm volatile ("inb %%dx, %%al" : "=a" (_v) : "d" (port)); \

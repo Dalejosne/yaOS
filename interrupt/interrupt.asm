@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 extern _irqHorloge, _irqClavier, _irqDefault, _sysCalls
-<<<<<<< HEAD
-=======
-extern _irqHorloge, _irqClavier, _irqDefault, _sysCalls, putchar
->>>>>>> master
-global _irq0, _irq1, _irq2, _irqLogicielle
-=======
 global _irqDef, _irq32, _irq33, _irqLogicielle
->>>>>>> 47789b9ebbb4ea00fd23fc20c918f75b575a407e
 
 %macro  SAVE_REGS 0
         pushad 
@@ -54,15 +46,7 @@ _irqDef:
     iret
 
 _irqLogicielle:
-<<<<<<< HEAD
-<<<<<<< HEAD
- SAVE_REGS
-=======
 	SAVE_REGS
->>>>>>> master
-=======
-	SAVE_REGS
->>>>>>> 47789b9ebbb4ea00fd23fc20c918f75b575a407e
     push eax
     call _sysCalls
     pop eax

@@ -10,22 +10,6 @@
 
 void task1(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  char *msg=(char*) 0x100;
-  msg[0] = 't' ;
-  msg[1] = 'a' ;
-  msg[2] = 'c' ;
-  msg[3] = 'h' ;
-  msg[4] = 'e' ;
-  msg[5] = '\n';
-  msg[6] = 0 ;
-  asm("mov %0, %%ebx; mov $0x01, %%eax; int $0x30" :: "m" (msg));
-  while(1);
-  return;
-=======
-=======
->>>>>>> 47789b9ebbb4ea00fd23fc20c918f75b575a407e
 	char *msg=(char*) 0x100;
 	msg[0] = 't' ;
 	msg[1] = 'a' ;
@@ -35,17 +19,8 @@ void task1(void)
 	msg[5] = '\n';
 	msg[6] = 0 ;
 	sysWrite(msg);
-<<<<<<< HEAD
 	while(1);
 	return;
->>>>>>> master
-=======
-	sysWrite(msg);
-	sysWrite(msg);
-	sysWrite(msg);
-	while(1);
-	return;
->>>>>>> 47789b9ebbb4ea00fd23fc20c918f75b575a407e
 }
 
 //Cette fonction initialise la gdt et copie la tâche en mémoire
@@ -53,15 +28,7 @@ void initTask(){
 
 	Default_Task_I.memory_emplacement = 0x300000;//Uniquement nécéssaire que le code ne corrompe pas la pile
 	Default_Task_I.size = 100;//La tâche est toute petite, on lui attribue juste 100 o.
-<<<<<<< HEAD
-<<<<<<< HEAD
-	memcpy((void*) &task1, (char*) Default_Task_I.memory_emplacement, Default_Task_I.size);
-=======
 	kmemcpy((void*) &task1, (char*) Default_Task_I.memory_emplacement, Default_Task_I.size);
->>>>>>> master
-=======
-	kmemcpy((void*) &task1, (char*) Default_Task_I.memory_emplacement, Default_Task_I.size);
->>>>>>> 47789b9ebbb4ea00fd23fc20c918f75b575a407e
 
 	//     Initialisation des descripteurs de segment utilisateur
     initGdtDescriptor(Default_Task_I.memory_emplacement, 0x0, 0xFF, 0x0D, Gdt+4); /* ucode */
