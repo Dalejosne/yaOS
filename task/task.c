@@ -19,6 +19,8 @@ void task1(void)
 	msg[5] = '\n';
 	msg[6] = 0 ;
 	sysWrite(msg);
+	sysWrite(msg);
+	sysPutchar('a');
 	while(1);
 	return;
 }
