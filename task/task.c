@@ -1,6 +1,6 @@
 #define __TASK__
 #include "../lib/stdlib.h"
-#include "../kernel/gdt.h"
+#include "../mmu/gdt.h"
 #include "../lib/types.h"
 #include "task.h"
 
@@ -26,7 +26,7 @@ void task1(void)
 }
 
 //Cette fonction initialise la gdt et copie la tâche en mémoire
-void initTask(){
+void initTaskGdt(){
 
 	Default_Task_I.memory_emplacement = 0x300000;//Uniquement nécéssaire que le code ne corrompe pas la pile
 	Default_Task_I.size = 100;//La tâche est toute petite, on lui attribue juste 100 o.

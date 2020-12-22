@@ -1,7 +1,7 @@
 #include "interrupt.h"
 #include "../lib/stdlib.h"
 #include "../lib/stdio.h"
-#include "../kernel/gdt.h"
+#include "../mmu/gdt.h"
 
 void _irqClavier()
 {

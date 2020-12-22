@@ -1,7 +1,7 @@
 #include "../lib/stdio.h"
 #include "../task/task.h"
 #include "../interrupt/interrupt.h"
-#include "gdt.h"
+#include "../mmu/gdt.h"
 #include "../interrupt/interrupt.h"
 
 extern char k_y;

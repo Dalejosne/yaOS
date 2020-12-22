@@ -35,5 +35,5 @@
 
 	void task1(void);
 	void callTask();
-	void initTask();
+	void initTaskGdt();
 #endif
