@@ -15,7 +15,7 @@ Les variables systèmes : On rajoute un "_" devant le nom de la variable, par ex
      Fonctions (appels systèmes et interruptions) : _maFonction
 
 Les macros assembleurs se nomme de la même manière que les définitions en C.
-Les définitions internes de structures, de variables et de fonctions ( donccelles que l'utilisateur n'est pas sensé utiliser)
+Les définitions internes de structures, de variables et de fonctions (donc celles que l'utilisateur n'est pas sensé utiliser)
 ont un _ en plus à la fin:
 	Structure : MaStructure_
     Variable : ma_var_
