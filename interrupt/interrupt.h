@@ -25,7 +25,7 @@
     //Définition des 
     #define EOI 0x20
     #define INT_TYPE 0x8E00
-
+    #define SYSCALL_TYPE 0xEF00
 
 
 

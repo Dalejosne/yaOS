@@ -45,4 +45,4 @@ bootloader:
 	make -C ../bootloader
 	
 floppy: bootloader noyau
-	cat ../bootloader/bootloader kernel /dev/zero | dd of=testOs.flp bs=512 count=2880
+	cat ../bootloader/bootloader kernel /dev/zero | dd of=testOs.flp bs=512 count=2880 iflag=fullblock

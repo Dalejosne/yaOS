@@ -25,15 +25,14 @@ void initGdt_(void)
 	initGdtDescriptor(0x0, 0xFFFFF, 0x93, 0x0D, Gdt+2);      /* data */
 	initGdtDescriptor(0x0, 0x0, 0x97, 0x0D, Gdt+3); 		/*stack*/
 	
-	//Initialisation du descripteur de segment par d√faut
+	//Initialisation des descripteurs de segment utilisateur
 	initTaskGdt();
     
 	//Initialisation des descripteurs de segment utilisateur
-	initGdtDescriptor(0x0, 0x0, 0x0, 0x0, Gdt+0);
 	Gdt_Ptr.size = GDTSIZE*8;
 	Gdt_Ptr.addr = GDTADDR;
 	
-	//Initialisation des descripteurs de segment utilisateur
+	//Chargement de la gdt en m√©moire
 	
 	kmemcpy((char*)Gdt, (char*) Gdt_Ptr.addr, Gdt_Ptr.size);
 
