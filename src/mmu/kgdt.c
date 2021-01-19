@@ -12,7 +12,7 @@ void initGdtDescriptor(u32 base, u32 limite, u8 accessibility, u8 flags, GdtT *G
 	Gdt_Desc->base_16_23 = (base & 0xff0000) >> 16;
 	Gdt_Desc->accessibility = accessibility;
 	Gdt_Desc->lim_16_19 = (limite & 0xf0000) >> 16;
-	Gdt_Desc->flags = (other & 0xf);
+	Gdt_Desc->flags = (flags & 0xf);
 	Gdt_Desc->base_24_31 = (base & 0xff000000) >> 24;
 	return;
 }
