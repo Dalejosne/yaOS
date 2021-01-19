@@ -10,13 +10,13 @@ Welcome to TestOs's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   task/task
-   mmu/gdt
+   x86/task/task
+   x86/mmu/gdt
+   x86/interrupt/interrupt
+   x86/interrupt/exception
    lib/ktypes
    lib/kio
    lib/klib
-   interrupt/interrupt
-   interrupt/exception
 
 
 Indices and tables

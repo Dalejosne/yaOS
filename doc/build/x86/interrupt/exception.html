@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>x86/interrupt/exception.h &#8212; TestOs 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="lib/ktypes.h" href="../../lib/ktypes.html" />
+    <link rel="prev" title="x86/interrupt/interrupt.h" href="interrupt.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="x86-interrupt-exception-h">
+<h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/interrupt/exception.h</span></code><a class="headerlink" href="#x86-interrupt-exception-h" title="Permalink to this headline">¶</a></h1>
+<p>All these exception write a message on the screen and stop the kernel</p>
+<dl class="c function">
+<dt id="c._defaultException">
+void <code class="sig-name descname">_defaultException</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._defaultException" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._divideByZeroExcept">
+void <code class="sig-name descname">_divideByZeroExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._divideByZeroExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._debugExcept">
+void <code class="sig-name descname">_debugExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._debugExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._nonMaskIntExcept">
+void <code class="sig-name descname">_nonMaskIntExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._nonMaskIntExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._bpExcept">
+void <code class="sig-name descname">_bpExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._bpExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._overflowExcept">
+void <code class="sig-name descname">_overflowExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._overflowExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._invalidOpcodeExcept">
+void <code class="sig-name descname">_invalidOpcodeExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._invalidOpcodeExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._nmExcept">
+void <code class="sig-name descname">_nmExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._nmExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._tsExcept">
+void <code class="sig-name descname">_tsExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._tsExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._npExcept">
+void <code class="sig-name descname">_npExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._npExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._ssExcept">
+void <code class="sig-name descname">_ssExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._ssExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._gpExcept">
+void <code class="sig-name descname">_gpExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._gpExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._pageExcept">
+void <code class="sig-name descname">_pageExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._pageExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._mfExcept">
+void <code class="sig-name descname">_mfExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._mfExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._acExcept">
+void <code class="sig-name descname">_acExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._acExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._mcExcept">
+void <code class="sig-name descname">_mcExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._mcExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._xmExcept">
+void <code class="sig-name descname">_xmExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._xmExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._veExcept">
+void <code class="sig-name descname">_veExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._veExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt id="c._sxExcept">
+void <code class="sig-name descname">_sxExcept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c._sxExcept" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">TestOs</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../task/task.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/task/task.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmu/gdt.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/mmu/gdt.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrupt.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/interrupt/interrupt.h</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/interrupt/exception.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/ktypes.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">lib/ktypes.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/kio.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">lib/kio.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/klib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">lib/klib.h</span></code></a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="interrupt.html" title="previous chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/interrupt/interrupt.h</span></code></a></li>
+      <li>Next: <a href="../../lib/ktypes.html" title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">lib/ktypes.h</span></code></a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Damien Lejosne/Daniel Sentis.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/x86/interrupt/exception.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

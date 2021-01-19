@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>x86/interrupt/interrupt.h &#8212; TestOs 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="x86/interrupt/exception.h" href="exception.html" />
+    <link rel="prev" title="x86/mmu/gdt.h" href="../mmu/gdt.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="x86-interrupt-interrupt-h">
+<h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/interrupt/interrupt.h</span></code><a class="headerlink" href="#x86-interrupt-interrupt-h" title="Permalink to this headline">¶</a></h1>
+<dl class="c macro">
+<dt id="c.outb">
+<code class="sig-name descname">outb</code><span class="sig-paren">(</span><em>port</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#c.outb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> – port number to be write</p></li>
+<li><p><strong>value</strong> – value to be write on port. sizeof(value) = 1o</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.in">
+<code class="sig-name descname">in</code><span class="sig-paren">(</span><em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.in" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>/**</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> – port number to be read</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>1 o, read on port</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.cli">
+<code class="sig-name descname">cli</code><a class="headerlink" href="#c.cli" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enable interrupt</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.sti">
+<code class="sig-name descname">sti</code><a class="headerlink" href="#c.sti" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Disable interrupt</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.EOI">
+<code class="sig-name descname">EOI</code><a class="headerlink" href="#c.EOI" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>End of interrupt signal</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.INT_TYPE">
+<code class="sig-name descname">INT_TYPE</code><a class="headerlink" href="#c.INT_TYPE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>base type for interrupt</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.SYSCALL_TYPE">
+<code class="sig-name descname">SYSCALL_TYPE</code><a class="headerlink" href="#c.SYSCALL_TYPE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>base type for syscall (when initialisating one of the idt descriptor)</p>
+</dd></dl>
+
+<dl class="c struct">
+<dt id="c.Idt_">
+<em class="property">struct </em><code class="sig-name descname">Idt_</code><a class="headerlink" href="#c.Idt_" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Interrupt descriptor table structure in memory</p>
+</dd></dl>
+
+<dl class="c struct">
+<dt id="c.IdtR_">
+<em class="property">struct </em><code class="sig-name descname">IdtR_</code><a class="headerlink" href="#c.IdtR_" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Interrupt descriptor table pointer descriptor</p>
+</dd></dl>
+
+<dl class="c type">
+<dt id="c.Idt">
+<em class="property">type </em><code class="sig-name descname">Idt</code><a class="headerlink" href="#c.Idt" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Structure to be use to create an idt</p>
+</dd></dl>
+
+<dl class="c type">
+<dt id="c.IdtR">
+<em class="property">type </em><code class="sig-name descname">IdtR</code><a class="headerlink" href="#c.IdtR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Structure to be use to create the idt reg</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.IDT_LIM">
+<code class="sig-name descname">IDT_LIM</code><a class="headerlink" href="#c.IDT_LIM" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>IDT size</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.IDT_BASE">
+<code class="sig-name descname">IDT_BASE</code><a class="headerlink" href="#c.IDT_BASE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>IDT adress</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.initIdtDescriptor">
+void <code class="sig-name descname">initIdtDescriptor</code><span class="sig-paren">(</span><a class="reference internal" href="../../lib/ktypes.html#c.u32" title="u32">u32</a> <em>offset</em>, <a class="reference internal" href="../../lib/ktypes.html#c.u16" title="u16">u16</a> <em>selector</em>, <a class="reference internal" href="../../lib/ktypes.html#c.u16" title="u16">u16</a> <em>type</em>, <a class="reference internal" href="#c.Idt" title="Idt">Idt</a> *<em>idt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.initIdtDescriptor" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialisate one of the descriptor located in the idt :</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> – Adress of the function to be call when an interrupt is emit</p></li>
+<li><p><strong>selector</strong> – see intel doc</p></li>
+<li><p><strong>type</strong> – See intel doc</p></li>
+<li><p><strong>idt</strong> – Pointer of the idt to be initialisate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c._sysCalls">
+void <code class="sig-name descname">_sysCalls</code><span class="sig-paren">(</span>int <em>num_appel</em><span class="sig-paren">)</span><a class="headerlink" href="#c._sysCalls" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p>Interrupt part for pic8259A</p>
+<dl class="c macro">
+<dt id="c.PIC_M_0">
+<code class="sig-name descname">PIC_M_0</code><a class="headerlink" href="#c.PIC_M_0" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>pic maître sur 0x20 et 0x21</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.PIC_E_0">
+<code class="sig-name descname">PIC_E_0</code><a class="headerlink" href="#c.PIC_E_0" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>pic esclave sur 0xA0 et 0xA1</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">TestOs</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../task/task.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/task/task.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmu/gdt.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/mmu/gdt.h</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/interrupt/interrupt.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="exception.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/interrupt/exception.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/ktypes.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">lib/ktypes.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/kio.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">lib/kio.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/klib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">lib/klib.h</span></code></a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../mmu/gdt.html" title="previous chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/mmu/gdt.h</span></code></a></li>
+      <li>Next: <a href="exception.html" title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">x86/interrupt/exception.h</span></code></a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Damien Lejosne/Daniel Sentis.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/x86/interrupt/interrupt.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

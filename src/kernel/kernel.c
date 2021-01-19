@@ -1,8 +1,16 @@
-#include "../lib/kio.h"
-#include "../task/task.h"
-#include "../interrupt/interrupt.h"
-#include "../mmu/gdt.h"
-#include "../interrupt/interrupt.h"
+#ifdef __i386__
+	#include "../lib/kio.h"
+	#include "../x86/task/task.h"
+	#include "../x86/interrupt/interrupt.h"
+	#include "../x86/interrupt/interrupt.h"
+	#include "../x86/mmu/gdt.h"
+	#ifdef __x86_64__
+		//TODO
+	#endif
+#endif
+#ifdef __aarch64__
+//TODO Ici daniel je te laisse gérer
+#endif
 
 extern char k_y;
 extern char kattr;
