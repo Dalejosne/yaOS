@@ -50,12 +50,18 @@
 <dl class="c function">
 <dt id="c.initGdtDescriptor">
 void <code class="sig-name descname">initGdtDescriptor</code><span class="sig-paren">(</span><a class="reference internal" href="../lib/ktypes.html#c.u32" title="u32">u32</a> <em>base</em>, <a class="reference internal" href="../lib/ktypes.html#c.u32" title="u32">u32</a> <em>limite</em>, <a class="reference internal" href="../lib/ktypes.html#c.u8" title="u8">u8</a> <em>accessibility</em>, <a class="reference internal" href="../lib/ktypes.html#c.u8" title="u8">u8</a> <em>flags</em>, GdtT *<em>Gdt_Desc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.initGdtDescriptor" title="Lien permanent vers cette définition">¶</a><br /></dt>
-<dd><p>Global descriptor table initialisation
-:param base: physical memory begin of the described segment
-:param limite: size of the described segment (See intel doc)
-:param accessibility: See intel documentation
-:param flags: See intel documentation
-:param Gdt_Desc: Adress of the descriptor to be write</p>
+<dd><p>Global descriptor table initialisation:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base</strong> – physical memory begin of the described segment</p></li>
+<li><p><strong>limite</strong> – size of the described segment (See intel doc)</p></li>
+<li><p><strong>accessibility</strong> – See intel documentation</p></li>
+<li><p><strong>flags</strong> – See intel documentation</p></li>
+<li><p><strong>Gdt_Desc</strong> – Adress of the descriptor to be write</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <p>Global descriptor table</p>

@@ -6,6 +6,8 @@
 
 	/**
 	 * Global descriptor table structure
+	 * 
+	 * 
 	 */
 	typedef struct GdtT_
 	{
@@ -20,6 +22,8 @@
 	
 	/**
 	 * Global descriptor table pointer structure
+	 * 
+	 * 
 	 */
 	typedef struct GdtPtr_
 	{
@@ -30,19 +34,25 @@
 	void initGdt_(void);
 	
 	/**
-	 * Global descriptor table initialisation
-	 * :param base: physical memory begin of the described segment
-	 * :param limite: size of the described segment (See intel doc)
-	 * :param accessibility: See intel documentation
-	 * :param flags: See intel documentation
-	 * :param Gdt_Desc: Adress of the descriptor to be write
-	 */
+	* Global descriptor table initialisation:
+	* 
+	* :param base: physical memory begin of the described segment
+	* :param limite: size of the described segment (See intel doc)
+	* :param accessibility: See intel documentation
+	* :param flags: See intel documentation
+	* :param Gdt_Desc: Adress of the descriptor to be write
+	* 
+	* 
+	*/
 	void initGdtDescriptor(u32 base, u32 limite, u8 accessibility, u8 flags, GdtT *Gdt_Desc);
+
 	#define initGdt() initGdt_(); asm("movw $0x18, %ax \n movw %ax, %ss \n movl $0x20000, %esp")
 
 	#ifdef __GDT__
 /**
 * Global descriptor table
+* 
+* 
 */
 		GdtT Gdt[GDTSIZE];	/* GDT */
 		GdtPtr Gdt_Ptr;		/* GDTR */

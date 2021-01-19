@@ -10,6 +10,8 @@
 	 /**
 	 * :param port: port number to be read
 	 * :return: 1 o, read on port
+	 * 
+	 * 
 	 */ 
 	#define in(port) ({    \
         unsigned char _v;       \
@@ -24,6 +26,8 @@
 	
 	/**
 	 * Disable interrupt
+	 * 
+	 * 
 	 */
 	#define sti asm("sti"::)//Les désactive
 	
@@ -38,6 +42,8 @@
     
     /**
 	  * base type for syscall (when initialisating one of the idt descriptor) 
+	  * 
+	  * 
 	  */
     #define SYSCALL_TYPE 0xEF00
 
@@ -56,6 +62,8 @@
     
 	/**
 	 * Interrupt descriptor table pointer descriptor
+	 * 
+	 * 
 	 */
     typedef struct IdtR_
     {
@@ -71,16 +79,21 @@
     
     /**
 	  * IDT adress
+	  * 
+	  * 
 	  */
     #define IDT_BASE 0x800 //adresse physique de la GDT
 
     
     /**
 	 * Initialisate one of the descriptor located in the idt :
+	 * 
 	 * :param offset: Adress of the function to be call when an interrupt is emit
 	 * :param selector: see intel doc
 	 * :param type: See intel doc
 	 * :param idt: Pointer of the idt to be initialisate
+	 * 
+	 * 
 	 */
     void initIdtDescriptor(u32 offset, u16 selector, u16 type, Idt* idt);
     void configurePic();
@@ -101,6 +114,8 @@
 	#define PIC_M_1 0x21 
 	/**
 	* pic esclave sur 0xA0 et 0xA1
+	* 
+	* 
 	*/
 	#define PIC_E_0 0xA0 
 	#define PIC_E_1 0xA1
