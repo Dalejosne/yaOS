@@ -120,5 +120,11 @@
 	*/
 	#define PIC_E_0 0xA0 
 	#define PIC_E_1 0xA1
+	
+	/**
+	 * Init x86 interrupts. Call by the kernel, at boot.
+	 * This function exist for each arch.
+	 */
+	void initInterruptions(void);
 	//Interrupt part for apic
 #endif

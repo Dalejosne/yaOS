@@ -1,11 +1,11 @@
 #ifdef __i386__
 	#include "../lib/kio.h"
 	#include "../x86/task/task.h"
-	#include "../x86/interrupt/interrupt.h"
-	#include "../x86/interrupt/interrupt.h"
-	#include "../x86/mmu/gdt.h"
 	#ifdef __x86_64__
 		//TODO
+	#else
+		#include "../x86/mmu/mmu.h"
+		#include "../x86/interrupt/interrupt.h"
 	#endif
 #endif
 #ifdef __aarch64__
@@ -21,33 +21,21 @@ void _start(void)
 {
 	k_y = 8;
 	kattr = 0xA;
-	write("\t\t\t\tOK\n");
-
-    kattr = 0x7;
-    write("Configuring pic...");
-    configurePic();//Configuration du pic
-    kattr = 0xA;
-    write("\t\tOK\n");
-    
-    kattr = 0x7;
-    write("Loading idt...");
-    initIdt();//Initialisation de l'idt
-    kattr = 0xA;
-    write("\t\t\tOK\n");
+	write("\t\t\t\tOK\n");//Si le bootloader a fonctionné, on affiche OK en vert
+	
+	kattr = 0x7;
+	write("Initialisating interruptions...\n");
+	initInterruptions();
     
 	kattr = 0x7;
-	write("Loading new gdt...");
-	
-	initGdt(); //Initialisation de la nouvelle gdt
+	write("Initialisating the memory management unit...\n");
+	initMmu();
 
 	main();
 }
 
 int main()
 {
-	kattr = 0xA;
-	write("\t\tOK\n");
-	
 	kattr = 0x7;
     write("Enabling interrupts...");
     sti;
