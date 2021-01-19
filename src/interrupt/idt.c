@@ -77,13 +77,14 @@ void initIdt()
 	initIdtDescriptor((u32) _irq19, 0x08, INT_TYPE, &idt[19]);
 	initIdtDescriptor((u32) _irq20, 0x08, INT_TYPE, &idt[20]);
 	initIdtDescriptor((u32) _irq30, 0x08, INT_TYPE, &idt[30]);
+	
+	//Initialisation des descripteurs d'interruption par défaut
     for(int i = 31; i<IDT_LIM;i++)
-        initIdtDescriptor((u32) _irqDef, 0x08, INT_TYPE, idt+i);
-    
+        initIdtDescriptor((u32) _irqDef, 0x08, INT_TYPE, &idt[i]);
     //Initialisation des descripteurs d'interruption du clavier et de l'horloge, et logicielles
-    initIdtDescriptor((u32) _irq32, 0x08, INT_TYPE, idt+32); //horloge
-    initIdtDescriptor((u32) _irq33, 0x08, INT_TYPE, idt+33); //clavier
-    initIdtDescriptor((u32) _syscall, 0x08, SYSCALL_TYPE, idt+48);//logicielles (int 0x30)
+    initIdtDescriptor((u32) _irq32, 0x08, INT_TYPE, &idt[32]); //horloge
+    initIdtDescriptor((u32) _irq33, 0x08, INT_TYPE, &idt[33]); //clavier
+    initIdtDescriptor((u32) _syscall, 0x08, SYSCALL_TYPE, &idt[48]);//logicielles (int 0x30)
     
     //Initialisation de idtr
     _Idt_R.base = IDT_BASE;

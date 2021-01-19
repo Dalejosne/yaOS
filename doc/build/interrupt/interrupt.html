@@ -35,6 +35,109 @@
             
   <div class="section" id="interrupt-interrupt-h">
 <h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">interrupt/interrupt.h</span></code><a class="headerlink" href="#interrupt-interrupt-h" title="Lien permanent vers ce titre">¶</a></h1>
+<dl class="c macro">
+<dt id="c.outb">
+<code class="sig-name descname">outb</code><span class="sig-paren">(</span><em>port</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#c.outb" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> – port number to be write</p></li>
+<li><p><strong>value</strong> – value to be write on port. sizeof(value) = 1o</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.in">
+<code class="sig-name descname">in</code><span class="sig-paren">(</span><em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.in" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>/**
+:param port: port number to be read
+:return: 1 o, read on port</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.cli">
+<code class="sig-name descname">cli</code><a class="headerlink" href="#c.cli" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>Enable interrupt</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.sti">
+<code class="sig-name descname">sti</code><a class="headerlink" href="#c.sti" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>Disable interrupt</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.EOI">
+<code class="sig-name descname">EOI</code><a class="headerlink" href="#c.EOI" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>End of interrupt signal</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.INT_TYPE">
+<code class="sig-name descname">INT_TYPE</code><a class="headerlink" href="#c.INT_TYPE" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>base type for interrupt</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.SYSCALL_TYPE">
+<code class="sig-name descname">SYSCALL_TYPE</code><a class="headerlink" href="#c.SYSCALL_TYPE" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>base type for syscall (when initialisating one of the idt descriptor)</p>
+</dd></dl>
+
+<dl class="c struct">
+<dt id="c.Idt_">
+<em class="property">struct </em><code class="sig-name descname">Idt_</code><a class="headerlink" href="#c.Idt_" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>Interrupt descriptor table structure in memory</p>
+</dd></dl>
+
+<dl class="c struct">
+<dt id="c.IdtR_">
+<em class="property">struct </em><code class="sig-name descname">IdtR_</code><a class="headerlink" href="#c.IdtR_" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>Interrupt descriptor table pointer descriptor</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.IDT_LIM">
+<code class="sig-name descname">IDT_LIM</code><a class="headerlink" href="#c.IDT_LIM" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>IDT size</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.IDT_BASE">
+<code class="sig-name descname">IDT_BASE</code><a class="headerlink" href="#c.IDT_BASE" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>IDT adress</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.initIdtDescriptor">
+void <code class="sig-name descname">initIdtDescriptor</code><span class="sig-paren">(</span><a class="reference internal" href="../lib/ktypes.html#c.u32" title="u32">u32</a> <em>offset</em>, <a class="reference internal" href="../lib/ktypes.html#c.u16" title="u16">u16</a> <em>selector</em>, <a class="reference internal" href="../lib/ktypes.html#c.u16" title="u16">u16</a> <em>type</em>, Idt *<em>idt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.initIdtDescriptor" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>Initialisate one of the descriptor located in the idt :
+:param offset: Adress of the function to be call when an interrupt is emit
+:param selector: see intel doc
+:param type: See intel doc
+:param idt: Pointer of the idt to be initialisate</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c._sysCalls">
+void <code class="sig-name descname">_sysCalls</code><span class="sig-paren">(</span>int <em>num_appel</em><span class="sig-paren">)</span><a class="headerlink" href="#c._sysCalls" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p>Interrupt part for pic8259A</p>
+<dl class="c macro">
+<dt id="c.PIC_M_0">
+<code class="sig-name descname">PIC_M_0</code><a class="headerlink" href="#c.PIC_M_0" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>pic maître sur 0x20 et 0x21</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.PIC_E_0">
+<code class="sig-name descname">PIC_E_0</code><a class="headerlink" href="#c.PIC_E_0" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>pic esclave sur 0xA0 et 0xA1</p>
+</dd></dl>
+
 </div>
 
 

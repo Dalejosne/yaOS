@@ -11,7 +11,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
-cautodoc_root = os.path.abspath('../../src')
+cautodoc_root = os.path.abspath('../../src/')
 
 
 # -- Project information -----------------------------------------------------

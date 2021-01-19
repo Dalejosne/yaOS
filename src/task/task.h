@@ -2,12 +2,7 @@
 	#define __TASK_H__
 	#include "../lib/ktypes.h"
 /**
-* The baznicator.
-*
-* :param foo: The Foo parameter.
-* :param bar: The Bar parameter.
-* :return: 0 on success, non-zero error code on error.
-* :since: v0.1
+* Task segment structure (x86)
 */
 	typedef struct Tss_{
     	u16    previous_task, __previous_task_unused;
@@ -43,6 +38,9 @@
 	#endif
 
 	void task1(void);
+/**
+ * Call for mono task kernel
+ */
 	void callTask();
 	void initTaskGdt();
 #endif

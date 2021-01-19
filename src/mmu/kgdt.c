@@ -5,7 +5,7 @@
 #include "../lib/klib.h"
 #include "../task/task.h"
 
-void initGdtDescriptor(u32 base, u32 limite, u8 accessibility, u8 other, GdtT *Gdt_Desc)
+void initGdtDescriptor(u32 base, u32 limite, u8 accessibility, u8 flags, GdtT *Gdt_Desc)
 {
 	Gdt_Desc->lim_0_15 = (limite & 0xffff);
 	Gdt_Desc->base_0_15 = (base & 0xffff);

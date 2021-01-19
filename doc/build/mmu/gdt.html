@@ -35,6 +35,30 @@
             
   <div class="section" id="mmu-gdt-h">
 <h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">mmu/gdt.h</span></code><a class="headerlink" href="#mmu-gdt-h" title="Lien permanent vers ce titre">¶</a></h1>
+<dl class="c struct">
+<dt id="c.GdtT_">
+<em class="property">struct </em><code class="sig-name descname">GdtT_</code><a class="headerlink" href="#c.GdtT_" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>Global descriptor table structure</p>
+</dd></dl>
+
+<dl class="c struct">
+<dt id="c.GdtPtr_">
+<em class="property">struct </em><code class="sig-name descname">GdtPtr_</code><a class="headerlink" href="#c.GdtPtr_" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>Global descriptor table pointer structure</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.initGdtDescriptor">
+void <code class="sig-name descname">initGdtDescriptor</code><span class="sig-paren">(</span><a class="reference internal" href="../lib/ktypes.html#c.u32" title="u32">u32</a> <em>base</em>, <a class="reference internal" href="../lib/ktypes.html#c.u32" title="u32">u32</a> <em>limite</em>, <a class="reference internal" href="../lib/ktypes.html#c.u8" title="u8">u8</a> <em>accessibility</em>, <a class="reference internal" href="../lib/ktypes.html#c.u8" title="u8">u8</a> <em>flags</em>, GdtT *<em>Gdt_Desc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.initGdtDescriptor" title="Lien permanent vers cette définition">¶</a><br /></dt>
+<dd><p>Global descriptor table initialisation
+:param base: physical memory begin of the described segment
+:param limite: size of the described segment (See intel doc)
+:param accessibility: See intel documentation
+:param flags: See intel documentation
+:param Gdt_Desc: Adress of the descriptor to be write</p>
+</dd></dl>
+
+<p>Global descriptor table</p>
 </div>
 
 
