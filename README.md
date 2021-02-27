@@ -22,13 +22,13 @@ If you see some ways to improve it, or if you want to contribute, please send us
 # USAGE
 - Under LINUX:
 > To make the source and test the os:
-> git clone https://github.com/Dalejosne/OS/tree/master
-> cd OS/src/all
-> make install
-> qemu testOs.flp
++ git clone https://github.com/Dalejosne/OS/tree/master
++ cd OS/src/all
++ make install
++ qemu testOs.flp
 
 > To make the doc :
-> cd OS/doc
-> make html
-> cd build
++ cd OS/doc
++ make html
++ cd build
 > firefox index.html
