@@ -25,4 +25,4 @@ ont un _ en plus à la fin:
 Certaines fois, les noms de variables structurées et de structures peuvent être similaires (cas des variables avec un seul mot). A ce moment, 
 nommer la variable structurée comme une variable normale.
 
-NB: Les développeurs sont priés de se tenir à ces normes pour des raisons de clarté. Évidemment ce nommage n'est parfai, du coup si vous avez des suggestions vous pouvez nous envoyer un mail à "newos2345@gmail.com". Et si vous souhaitez contribuer, contactez nous :-) !
+NB: Les développeurs sont priés de se tenir à ces normes pour des raisons de clarté. Évidemment ce nommage n'est pas parfais (et peut être un peu bizarre), et du coup si vous avez des suggestions vous pouvez nous envoyer un mail à "newos2345@gmail.com". Et si vous souhaitez contribuer, contactez nous :-) !
