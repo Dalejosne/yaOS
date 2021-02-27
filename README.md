@@ -31,4 +31,4 @@ If you see some ways to improve it, or if you want to contribute, please send us
 + cd OS/doc
 + make html
 + cd build
-> firefox index.html
++ firefox index.html
