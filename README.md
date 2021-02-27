@@ -15,5 +15,6 @@
 - python
 - vga graphics
 - full mmu support
+- syscalls
 > For now, it is just an x86 system with segmentation, mono user and syscall support.
 If you see some ways to improve it, or if you want to contribute, please send us an email at "newos2345@gmail.com".
