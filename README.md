@@ -24,7 +24,7 @@ If you see some ways to improve it, or if you want to contribute, please send us
 > To make the source and test the os:
 + git clone https://github.com/Dalejosne/OS/tree/master
 + cd OS/src/all
-+ make install
++ make
 + qemu testOs.flp
 
 > To make the doc :
