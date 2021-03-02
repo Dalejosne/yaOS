@@ -23,7 +23,7 @@ If you see some ways to improve it, or if you want to contribute, please send us
 
 # USAGE
 
-- Under LINUX:
+## Under LINUX:
 To make the source and test the os:
 + git clone https://github.com/Dalejosne/OS/tree/master
 + cd OS/all
@@ -36,3 +36,6 @@ To make the doc :
 + make html
 + cd build/html
 + firefox index.html
+
+## OVER
+If someone know how to do it under macos or windows, if he(she) could tell us how to do it would be nice.
