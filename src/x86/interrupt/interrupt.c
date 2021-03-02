@@ -1,5 +1,5 @@
-#include "interrupt.h"
-#include "../../lib/kio.h"
+#include <x86/interrupt/interrupt.h>
+#include <lib/kio.h>
 extern char k_y;
 extern char kattr;
 

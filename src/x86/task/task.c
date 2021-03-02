@@ -1,8 +1,8 @@
 #define __TASK__
-#include "../../lib/klib.h"
-#include "../../lib/ktypes.h"
-#include "../mmu/gdt.h"
-#include "task.h"
+#include <lib/klib.h>
+#include <lib/ktypes.h>
+#include <x86/mmu/gdt.h>
+#include <x86/task/task.h>
 
 #define sysWrite(chaine) asm("mov %0, %%ebx; mov $0x02, %%eax; int $0x30" :: "m"(chaine))
 #define sysPutchar(lettre) asm ("mov %0, %%ebx; mov $0x01, %%eax; int $0x30":: "g"(lettre))
@@ -19,9 +19,6 @@ void task1(void)
 	msg[5] = '\n';
 	msg[6] = 0 ;
 	sysPutchar('a');
-	sysWrite(msg);
-	sysWrite(msg);
-	sysWrite(msg);
 	sysWrite(msg);
 	while(1);
 	return;

@@ -1,9 +1,9 @@
 #define __GDT__
 
-#include "gdt.h"
-#include "../../lib/ktypes.h"
-#include "../../lib/klib.h"
-#include "../task/task.h"
+#include <x86/mmu/gdt.h>
+#include <lib/ktypes.h>
+#include <lib/klib.h>
+#include <x86/task/task.h>
 
 void initGdtDescriptor(u32 base, u32 limite, u8 accessibility, u8 flags, GdtT *Gdt_Desc)
 {

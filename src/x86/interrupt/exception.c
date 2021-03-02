@@ -11,8 +11,8 @@
 *
 */
 
-#include "exception.h"
-#include "../../lib/kio.h"
+#include <x86/interrupt/exception.h>
+#include <lib/kio.h>
 
 void _defaultException()
 {

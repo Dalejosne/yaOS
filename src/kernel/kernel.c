@@ -1,11 +1,11 @@
 #ifdef __i386__
-	#include "../lib/kio.h"
-	#include "../x86/task/task.h"
+	#include <lib/kio.h>
+	#include <x86/task/task.h>
 	#ifdef __x86_64__
 		//TODO
 	#else
-		#include "../x86/mmu/mmu.h"
-		#include "../x86/interrupt/interrupt.h"
+		#include <x86/mmu/mmu.h>
+		#include <x86/interrupt/interrupt.h>
 	#endif
 #endif
 #ifdef __aarch64__

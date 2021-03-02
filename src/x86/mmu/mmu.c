@@ -1,6 +1,6 @@
-#include "gdt.h"
-#include "mmu.h"
-#include "../../lib/kio.h"
+#include <x86/mmu/gdt.h>
+#include <x86/mmu/mmu.h>
+#include <lib/kio.h>
 extern char k_y;
 extern char kattr;
 

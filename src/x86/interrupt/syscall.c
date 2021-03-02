@@ -1,7 +1,7 @@
-#include "interrupt.h"
-#include "../../lib/klib.h"
-#include "../../lib/kio.h"
-#include "../mmu/gdt.h"
+#include <x86/interrupt/interrupt.h>
+#include <lib/klib.h>
+#include <lib/kio.h>
+#include <x86/mmu/gdt.h>
 
 void _irqClavier()
 {

@@ -1,7 +1,7 @@
-#include "interrupt.h"
-#include "../../lib/klib.h"
-#include "../../lib/kio.h"
-#include "../mmu/gdt.h"
+#include <x86/interrupt/interrupt.h>
+#include <lib/klib.h>
+#include <lib/kio.h>
+#include <x86/mmu/gdt.h>
 
 static Idt idt[IDT_LIM];
 static IdtR _Idt_R;
