@@ -37,5 +37,5 @@ To make the doc :
 + cd build/html
 + firefox index.html
 
-## OVER
-If someone know how to do it under macos or windows, if he(she) could tell us how to do it would be nice.
+## OTHER
+If someone know how to do it under macos or windows, if he(or she) could tell us how to do it would be nice.
