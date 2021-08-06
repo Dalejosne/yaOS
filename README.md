@@ -33,7 +33,6 @@ $ make
 $ qemu testOs.flp
 ```
 To make the doc :
-<<<<<<< HEAD
 ```sh
 $ cd OS/doc
 $ make html
