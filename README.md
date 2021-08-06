@@ -33,6 +33,7 @@ $ make
 $ qemu testOs.flp
 ```
 To make the doc :
+<<<<<<< HEAD
 ```sh
 $ cd OS/doc
 $ make html
@@ -41,3 +42,12 @@ $ firefox index.html
 ```
 ## OVER
 If someone know how to do it under macos or windows, if he(she) could tell us how to do it would be nice.
+=======
++ cd OS/doc
++ make html
++ cd build/html
++ firefox index.html
+
+## OTHER
+If someone know how to do it under macos or windows, if he(or she) could tell us how to do it would be nice.
+>>>>>>> 28bfc0b7dd05ad53389114b889f634b4375fe0f4
