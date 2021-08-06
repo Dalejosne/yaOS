@@ -12,7 +12,7 @@ It aims to be usable under x86, x64 and aarch64 computers, and is more design fo
 - parrallel processing
 - file systems
 - network
-- (c compiler. Maybe, it seems hard to port gcc under a newly created OS)
+- (c compiler. Maybe, it seems hard to port gcc on a newly created OS)
 - python
 - vga graphics
 - full mmu support
@@ -24,18 +24,20 @@ If you see some ways to improve it, or if you want to contribute, please send us
 # USAGE
 
 ## Under LINUX:
+
 To make the source and test the os:
-+ git clone https://github.com/Dalejosne/OS/tree/master
-+ cd OS/all
-+ export PREFIX=/path/to/your/OS/directory
-+ make
-+ qemu testOs.flp
-
+```sh
+$ git clone https://github.com/Dalejosne/OS/tree/master
+$ cd OS/all
+$ make
+$ qemu testOs.flp
+```
 To make the doc :
-+ cd OS/doc
-+ make html
-+ cd build/html
-+ firefox index.html
-
+```sh
+$ cd OS/doc
+$ make html
+$ cd build/html
+$ firefox index.html
+```
 ## OVER
 If someone know how to do it under macos or windows, if he(she) could tell us how to do it would be nice.

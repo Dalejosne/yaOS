@@ -1,4 +1,5 @@
 LINK = ld -Ttext 0x1000 --oformat binary -m elf_i386
+PREFIX = $(CURDIR)/..
 
 all : floppy
 floppy: bootloader kernel
