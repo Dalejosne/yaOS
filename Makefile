@@ -38,5 +38,5 @@ clean_mmu:
 clean_doc:
 	make -C $(PREFIX)/doc clean
 
-doc:
+docs:
 	make -C $(PREFIX)/doc html
