@@ -97,5 +97,4 @@ gdtptr:
 
 #NOP until 510 (make the bootloader bootable)
 .fill (510 + _start - .), 1, 144
-.byte 0xAA
-.byte 0x55
+.word 0xAA55

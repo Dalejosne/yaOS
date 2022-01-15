@@ -3,7 +3,7 @@ PREFIX = $(CURDIR)
 
 all : floppy
 floppy: bootloader kernel
-	cat $(PREFIX)/src/x86/bootloader/bootloader build/kernel /dev/zero | dd of=testOs.flp bs=512 count=2880 iflag=fullblock
+	cat $(PREFIX)/src/x86/bootloader/bootloader $(PREFIX)/build/kernel /dev/zero | dd of=testOs.flp bs=512 count=2880 iflag=fullblock
 
 #L'ordre est important !!! ../kernel/kernel.o doit être linké en premier !
 kernel: kernel_o interrupt_o task_o mmu_o lib
@@ -22,7 +22,7 @@ bootloader:
 	make -C $(PREFIX)/src/x86/bootloader
 	 
 clean: clean_kernel clean_task clean_interrupt clean_lib clean_bootloader clean_mmu clean_doc
-	rm -rf *.o *.a build/kernel testOs.flp
+	rm -rf *.o *.a $(PREFIX)/build/kernel testOs.flp
 clean_kernel:
 	make -C $(PREFIX)/src/kernel clean
 clean_task:
