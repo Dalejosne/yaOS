@@ -1,5 +1,5 @@
 PREFIX=$(CURDIR)/../../..
-CC=gcc -g -m32 -Wall -L/usr/lib32 -fno-pie -no-pie -fno-stack-protector -lssp -I$(PREFIX)/include/
+CC=gcc -g -m32 -Wall -fno-pie -fno-stack-protector -I$(PREFIX)/include/
 all:
 	$(CC) -c task.c
 

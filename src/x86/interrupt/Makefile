@@ -1,13 +1,13 @@
 PREFIX=$(CURDIR)/../../..
-CC=gcc -m32 -g -Wall -L/usr/lib32 -fno-pie -no-pie -fno-stack-protector -lssp -I$(PREFIX)/include/
+CC=gcc -m32 -g -Wall -fno-pie -fno-stack-protector -I$(PREFIX)/include/
 
 interrupt_o: int_asm exc_asm
 	$(CC) -c *.c
 
 int_asm: 
-	nasm -f elf interrupt.asm -o int.o
+	as interrupt.S -o int.o --32
 exc_asm:
-	nasm -f elf exception.asm -o exc.o
+	as exception.S -o exc.o --32
 
 clean:
 	rm -rf *.o

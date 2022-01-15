@@ -6,7 +6,7 @@
 	* :param port: port number to be write
 	* :param value: value to be write on port. sizeof(value) = 1o
 	*/ 
-	#define outb(port, value) asm("outb %%al, %%dx; jmp 1f; 1:": :"d" (port), "a" (value))/**
+	#define outb(port, value) asm("outb %%al, %%dx; jmp 1f; 1:": :"d" (port), "a" (value))
 	/**
 	* 
 	* :param port: port number to be read

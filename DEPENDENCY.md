@@ -1,10 +1,12 @@
-- SRC:
-  - qemu
-  - gcc
-  - nasm
-  - make
+- SRC
+	- gcc
+	- as (should come with gcc)
+	- make
 
-- DOC:
-  - sphinx
-  - hawkmoth (pip install hawkmoth)
-  - python3-clang (apt install python3-clang)
+- TEST
+	- qemu
+
+- DOC
+	- sphinx
+	- hawkmoth (pip install hawkmoth)
+	- python3-clang (apt install python3-clang)
