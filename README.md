@@ -1,5 +1,6 @@
 # yaOS (yet another OS)
-This branch is the developpement one.
+
+An OS with as little dependencies as possible, just to learn how to do it.
 
 This OS is a microkernel base one, and aim to be a simple and lightweight one. However it's good to notice that it is made by two students who want to improve their knowledges in computer science, and in this case, in a more "hardware view" of it. Thus, the code should be sometimes a little weird, and should be far to be perfect !
 
