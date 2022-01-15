@@ -28,7 +28,7 @@ If you see some ways to improve it, or if you want to contribute, please send us
 To make the source and test the os:
 ```sh
 $ git clone https://github.com/Dalejosne/yaOS/tree/master
-$ cd yaOS/all
+$ cd yaOS
 $ make
 $ qemu testOs.flp
 ```
