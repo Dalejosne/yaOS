@@ -1,5 +1,6 @@
 # yaOS (yet another OS)
-This branch is the developpement one.
+
+An OS with as little dependencies as possible, just to learn how to do it.
 
 This OS is a microkernel base one, and aim to be a simple and lightweight one. However it's good to notice that it is made by two students who want to improve their knowledges in computer science, and in this case, in a more "hardware view" of it. Thus, the code should be sometimes a little weird, and should be far to be perfect !
 
@@ -28,7 +29,7 @@ If you see some ways to improve it, or if you want to contribute, please send us
 To make the source and test the os:
 ```sh
 $ git clone https://github.com/Dalejosne/yaOS/tree/master
-$ cd yaOS/all
+$ cd yaOS
 $ make
 $ qemu testOs.flp
 ```
@@ -39,6 +40,6 @@ $ make html
 $ cd build/html
 $ firefox index.html
 ```
-## OVER
+## OTHER
 If someone know how to do it under macos or windows, if he(she) could tell us how to do it would be nice.
 
