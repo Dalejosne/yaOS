@@ -47,15 +47,12 @@ loadk:
 	pop %es
 calc_addr:
 	#Process GDT adress : = DS*16 + GDT_ADDR
-	xor %eax, %eax  #eax = 0
-	xor %ebx, %ebx  #ebx = 0
-	movw %ds, %ax   #ax = ds
-	movl %eax, %ecx #ecx = ax = ds
-	shl $4, %ecx    #ecx <<= 4 <=> ecx *= 16
-	movw $gdt, %bx  #ebx = gdt_addr
-	addl %ebx, %ecx #ebx += ecx (DS*16)
-	#Put the result in the base part of the gdtptr
-	movl %ecx, (gdtptr+2)
+	xor %eax, %eax        #eax = 0
+	movw %ds, %ax         #ax = ds
+	shl $4, %eax          #eax <<= 4 <=> eax *= 16
+	movw $gdt, %bx        #ebx = gdt_addr
+	addl %ebx, %eax       #eax += ebx (DS*16)
+	movl %eax, (gdtptr+2) #Put the result in the base part of the gdtptr
 enter_modep:
 	#enter protected mode
 	cli
@@ -75,26 +72,26 @@ next:
 	movw %ax, %ss
 	movl $0x9F000, %esp
 
-	ljmpl $0x8,$0x1000  #reset code segment (here to 8 because it is the corresponding cs entry in the gdt)
+	ljmpl $0x8,$0x1000  #reset code segment (here to 8 because this is the corresponding cs entry in the gdt)
 
-/* -------------------------------------------------------------------- */
+#############################   Some data   #############################
 boot_drv: .byte 0
 msg_debut:
 	.ascii "Loading kernel..."
-/* --------------------------------------------------------------------*/
-
+################################# GDT  ##################################
 gdt:
 	.byte 0, 0, 0, 0, 0, 0, 0, 0
 gdt_cs:
 	.byte 0xFF, 0xFF, 0x0, 0x0, 0x0, 0b10011011, 0b11011111, 0x0
 gdt_ds:
 	.byte 0xFF, 0xFF, 0x0, 0x0, 0x0, 0b10010011, 0b11011111, 0x0
-gdtend:
-/* --------------------------------------------------------------------*/
+############################## GDT PTR  #################################
 gdtptr:
-	.word 24 #limit : there is 3 descriptor see above) which are 8 bit long each.
+	.word 24 #limit : there is 3 descriptor see above) which are 8 bit long each => 24 byte total.
 	.long 0  # base
+##########################################################################
 
-#NOP until 510 (make the bootloader bootable)
+############## NOP until 510 (make the bootloader bootable)###############
 .fill (510 + _start - .), 1, 144
 .word 0xAA55
+##########################################################################
